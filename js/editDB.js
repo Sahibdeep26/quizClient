@@ -1,24 +1,80 @@
-var questionId = localStorage.getItem('questionId')
-var question = localStorage.getItem('question')
-var option1 = localStorage.getItem('option1')
-var option2 = localStorage.getItem('option2')
-var option3 = localStorage.getItem('option3')
-var option4 = localStorage.getItem('option4')
-var answer = localStorage.getItem('answer')
+var questionId = sessionStorage.getItem('questionId')
+var question = sessionStorage.getItem('question')
+var option1 = sessionStorage.getItem('option1')
+var option2 = sessionStorage.getItem('option2')
+var option3 = sessionStorage.getItem('option3')
+var option4 = sessionStorage.getItem('option4')
+var ans = sessionStorage.getItem('answer')
 
-document.getElementById("question").value = question;
-document.getElementById("questionId").value = questionId;
-document.getElementById("opt1").value = option1;
-document.getElementById("opt2").value = option2;
-document.getElementById("opt3").value = option3;
-document.getElementById("opt4").value = option4;
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString)
+console.log(queryString)
 
-function getBack(){
-  window.localStorage.clear();
+checkQuesData();
+function checkQuesData(){
+  //ID
+  if(document.getElementById("questionId").value==""){
+    const questionId = urlParams.get('id')
+    document.getElementById("questionId").value = questionId;
+    console.log(questionId)
+  }else{
+    document.getElementById("questionId").value = questionId;
+  }
+
+  //Question
+  if(document.getElementById("question").value==""){
+    const question = urlParams.get('question')
+    document.getElementById("question").value = question;
+  }else{
+    document.getElementById("question").value = question;
+  }
+
+  //Option-1
+  if(document.getElementById("opt1").value ==""){
+    const option1 = urlParams.get('option1')
+    document.getElementById("opt1").value = option1;
+  }else{
+    document.getElementById("opt1").value = option1;
+  }
+
+  //Option-2
+  if(document.getElementById("opt2").value ==""){
+    const option2 = urlParams.get('option2')
+    document.getElementById("opt2").value = option2;
+  }else{
+    document.getElementById("opt2").value = option2;
+  }
+
+  //Option-3
+  if(document.getElementById("opt3").value ==""){
+    const option3 = urlParams.get('option3')
+    document.getElementById("opt3").value = option3;
+  }else{
+    document.getElementById("opt3").value = option3;
+  }
+
+  //Option-4
+  if(document.getElementById("opt4").value ==""){
+    const option4 = urlParams.get('option4')
+    document.getElementById("opt4").value = option4;
+
+
+  }else{
+    document.getElementById("opt4").value = option4;
+  }
+  if(ans == ""){
+    const answer = urlParams.get('answer')
+    checkAnswer(answer)
+  }else{
+    checkAnswer(ans);
+  }
 }
 
-checkAnswer();
-function checkAnswer(){
+function getBack(){
+  window.sessionStorage.clear();
+}
+
+function checkAnswer(answer){
     if(answer == option1) {
         document.getElementById("checkOption1").checked = true;
     } else if(answer == option2){
@@ -87,7 +143,7 @@ function empty() {
             return false;
         }else{
             checkAgain(questionId,questionString, opt1, opt2, opt3, opt4, answerKey);
-            window.localStorage.clear();
+            window.sessionStorage.clear();
         }
     }
     else{
