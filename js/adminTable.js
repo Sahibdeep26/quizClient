@@ -70,12 +70,12 @@ function deleteQuestion(questionId) {
 function editQuestion(questionId, question, opt1,opt2,opt3,opt4, answer) {
   console.log(questionId, question, opt1, opt2, opt3, opt4, answer)
 
-  localStorage.setItem("questionId", questionId),
-  localStorage.setItem("question", question),
-  localStorage.setItem("option1",opt1),
-  localStorage.setItem("option2",opt2),
-  localStorage.setItem("option3",opt3),
-  localStorage.setItem("option4",opt4),
+  localStorage.setItem("questionId", questionId)
+  localStorage.setItem("question", question)
+  localStorage.setItem("option1",opt1)
+  localStorage.setItem("option2",opt2)
+  localStorage.setItem("option3",opt3)
+  localStorage.setItem("option4",opt4)
   localStorage.setItem("answer",answer)
 }
 
