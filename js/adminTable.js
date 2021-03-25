@@ -15,6 +15,7 @@ xmlhttp.onreadystatechange = function () {
   if (this.readyState == 4 && this.status == 200) {
     var myArr = JSON.parse(this.responseText);
     myFunction(myArr);
+    console.log(myArr)
   }
 };
 xmlhttp.open("GET",  url, true);
@@ -32,7 +33,7 @@ function myFunction(arr) {
         <td>${arr[i].question}</td>
         <td>${arr[i].answer}</td>
         <td>
-          <a class="btn border-shadow update" id="updateBtn" data-id="${arr[i].questionId}" onclick='editQuestion("${arr[i].questionId}", "${arr[i].question}", "${arr[i].options[0]}", "${arr[i].options[1]}", "${arr[i].options[2]}", "${arr[i].options[3]}", "${arr[i].answer}")' href="./editQuestion.html">
+          <a href="./editQuestion.html?id=${arr[i].questionId}&question=${arr[i].question}&option1=${arr[i].options[0]}&option2=${arr[i].options[1]}&option3=${arr[i].options[2]}&option4=${arr[i].options[3]}&answer=${arr[i].answer}"class="btn border-shadow update" id="updateBtn" data-id="${arr[i].questionId}" onclick='editQuestion("${arr[i].questionId}", "${arr[i].question}", "${arr[i].options[0]}", "${arr[i].options[1]}", "${arr[i].options[2]}", "${arr[i].options[3]}", "${arr[i].answer}")'>
             <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
           </a>
           <a class="btn border-shadow delete"  id="deleteBtn" data-id="${arr[i].questionId}" onclick="checkDelete(${arr[i].questionId})">
@@ -69,17 +70,15 @@ function deleteQuestion(questionId) {
 
 function editQuestion(questionId, question, opt1,opt2,opt3,opt4, answer) {
   console.log(questionId, question, opt1, opt2, opt3, opt4, answer)
+  sessionStorage.setItem("questionId", questionId)
+  sessionStorage.setItem("question", question)
+  sessionStorage.setItem("option1",opt1)
+  sessionStorage.setItem("option2",opt2)
+  sessionStorage.setItem("option3",opt3)
+  sessionStorage.setItem("option4",opt4)
+  sessionStorage.setItem("answer",answer)
 
-  localStorage.setItem("questionId", questionId)
-  localStorage.setItem("question", question)
-  localStorage.setItem("option1",opt1)
-  localStorage.setItem("option2",opt2)
-  localStorage.setItem("option3",opt3)
-  localStorage.setItem("option4",opt4)
-  localStorage.setItem("answer",answer)
 }
-
-
 
 
 
