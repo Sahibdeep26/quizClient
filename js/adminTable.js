@@ -32,7 +32,7 @@ function myFunction(arr) {
         <td>${arr[i].question}</td>
         <td>${arr[i].answer}</td>
         <td>
-          <a class="btn border-shadow update" id="updateBtn" data-id="${arr[i].questionId}" onclick='editQuestion(${arr[i].questionId}, "${arr[i].question}", "${arr[i].options[0]}", "${arr[i].options[1]}", "${arr[i].options[2]}", "${arr[i].options[3]}", "${arr[i].answer}")' href="./editQuestion.html">
+          <a class="btn border-shadow update" id="updateBtn" data-id="${arr[i].questionId}" onclick='editQuestion("${arr[i].questionId}", "${arr[i].question}", "${arr[i].options[0]}", "${arr[i].options[1]}", "${arr[i].options[2]}", "${arr[i].options[3]}", "${arr[i].answer}")' href="./editQuestion.html">
             <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
           </a>
           <a class="btn border-shadow delete"  id="deleteBtn" data-id="${arr[i].questionId}" onclick="checkDelete(${arr[i].questionId})">
