@@ -13,7 +13,9 @@ document.getElementById("opt2").value = option2;
 document.getElementById("opt3").value = option3;
 document.getElementById("opt4").value = option4;
 
-
+function getBack(){
+  window.localStorage.clear();
+}
 
 checkAnswer();
 function checkAnswer(){
