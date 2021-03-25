@@ -84,6 +84,7 @@ function loadFormData(question, opt1, opt2, opt3, opt4, Answer) {
   xmlhttp.send(JSON.stringify({"question": question, "opt1": opt1, "opt2":opt2,"opt3":opt3,"opt4":opt4, "Answer": Answer}));
 
   console.log(xmlhttp.responseText);
+  alert("Question Saved")
 }
 
 function checkAgain(questionString, opt1, opt2, opt3, opt4, Answer){
